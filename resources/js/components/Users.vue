@@ -1,46 +1,59 @@
-<<template>
+<template>
 
-    <h2>Users Listing Component</h2>
+    <div>
+    <h2>Users Listing</h2>
     
+    <a href="/users/create" class="btn btn-success pull-right mb-2">Add New User</a>  
     
-
-   <!-- <table class="table table-striped">
+   <table class="table table-striped">
         <thead>
             <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Action</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            </tr>
+            <tr v-for="user in users" :key="user.id">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a href="" class="btn btn-primary">Edit</a>
+                    <a href="" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>                  
         </tbody>
-    </table> -->
+    </table>
+    </div>
 
 </template>
 
 <script>
     export default {
+        data(){
+            return {
+                users: [],
+                user:{
+                    id: 0,
+                    name: '',
+                    email: ''
+                }
+            }
+        },
          mounted() {
             console.log('User component mounted.')
+            this.getUsers();
+        },
+        methods: {            
+            getUsers(){
+                axios.get('api/users')
+                .then(response=>{                   
+                    this.users = response.data;
+                     console.log(this.users);
+                })
+            }
         }
     }
 </script>
