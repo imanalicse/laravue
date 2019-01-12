@@ -1848,8 +1848,18 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/users').then(function (response) {
-        _this.users = response.data;
-        console.log(_this.users);
+        _this.users = response.data; //console.log(this.users);
+      });
+    },
+    deleteUser: function deleteUser(id) {
+      var _this2 = this;
+
+      axios.delete('/api/users/' + id).then(function (response) {
+        console.log(response);
+
+        _this2.getUsers();
+      }).catch(function (error) {
+        console.log(error);
       });
     }
   }
@@ -36922,9 +36932,19 @@ var render = function() {
                 [_vm._v("Edit")]
               ),
               _vm._v(" "),
-              _c("a", { staticClass: "btn btn-danger", attrs: { href: "" } }, [
-                _vm._v("Delete")
-              ])
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.deleteUser(user.id)
+                    }
+                  }
+                },
+                [_vm._v("Delete")]
+              )
             ])
           ])
         }),

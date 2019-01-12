@@ -21,7 +21,7 @@
                 <td>{{ user.email }}</td>
                 <td>
                     <a :href="'/users/'+user.id+'/edit'" class="btn btn-primary">Edit</a>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <button type="button" class="btn btn-danger" @click="deleteUser(user.id)">Delete</button>
                 </td>
             </tr>                  
         </tbody>
@@ -51,7 +51,16 @@
                 axios.get('/api/users')
                 .then(response=>{                   
                     this.users = response.data;
-                     console.log(this.users);
+                     //console.log(this.users);
+                })
+            },
+            deleteUser(id){
+
+                axios.delete('/api/users/'+id).then(response => {
+                    console.log(response);
+                    this.getUsers();
+                }).catch(error => {
+                    console.log(error);
                 })
             }
         }
