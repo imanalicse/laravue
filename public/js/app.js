@@ -1901,13 +1901,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: '',
       email: '',
       password: '',
-      model: {}
+      errors: []
     };
   },
   mounted: function mounted() {
@@ -1917,20 +1920,27 @@ __webpack_require__.r(__webpack_exports__);
     addNewUser: function addNewUser(e) {
       var _this = this;
 
+      this.errors = [];
       e.preventDefault();
-      this.model = {
+      var model = {
         name: this.name,
         email: this.email,
         password: this.password
       };
-      console.log(this.model);
-      axios.post('/api/users', this.model).then(function (response) {
+      console.log(model);
+      axios.post('/api/users', model).then(function (response) {
         console.log(response);
+        console.log('successful');
         _this.name = '';
         _this.email = '';
         _this.password = '';
-      }).catch(function (err) {
-        console.log(err);
+      }).catch(function (error) {
+        console.log('error');
+        console.log(error.response.data);
+
+        if (error.response.status == 422) {
+          _this.errors = error.response.data.errors;
+        }
       });
     }
   }
@@ -37025,7 +37035,13 @@ var render = function() {
                 _vm.name = $event.target.value
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.name
+            ? _c("span", { staticClass: "error" }, [
+                _vm._v(_vm._s(_vm.errors.name[0]))
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -37051,7 +37067,13 @@ var render = function() {
                 _vm.email = $event.target.value
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.email
+            ? _c("span", { staticClass: "error" }, [
+                _vm._v(_vm._s(_vm.errors.email[0]))
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
@@ -37081,7 +37103,13 @@ var render = function() {
                 _vm.password = $event.target.value
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _vm.errors.password
+            ? _c("span", { staticClass: "error" }, [
+                _vm._v(_vm._s(_vm.errors.password[0]))
+              ])
+            : _vm._e()
         ]),
         _vm._v(" "),
         _c(
