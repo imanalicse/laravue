@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    Users
-    
+
+    <users-component></users-component>
     <example-component></example-component>
 
 @endsection
