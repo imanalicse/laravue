@@ -8,6 +8,11 @@ class UsersController extends Controller
 {
     public function index()
     {
-        return view('users');
+        return view('users.users');
+    }
+
+    public function create()
+    {
+        return view('users.create');
     }
 }
