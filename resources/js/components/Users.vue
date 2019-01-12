@@ -20,7 +20,7 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
                 <td>
-                    <a href="" class="btn btn-primary">Edit</a>
+                    <a :href="'/users/'+user.id+'/edit'" class="btn btn-primary">Edit</a>
                     <a href="" class="btn btn-danger">Delete</a>
                 </td>
             </tr>                  
@@ -48,7 +48,7 @@
         },
         methods: {            
             getUsers(){
-                axios.get('api/users')
+                axios.get('/api/users')
                 .then(response=>{                   
                     this.users = response.data;
                      console.log(this.users);

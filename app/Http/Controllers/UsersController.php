@@ -15,4 +15,9 @@ class UsersController extends Controller
     {
         return view('users.create');
     }
+
+    public function edit($id)
+    {
+        return view('users.edit', compact('id'));
+    }
 }
