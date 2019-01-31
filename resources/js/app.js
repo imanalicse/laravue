@@ -26,7 +26,7 @@ Vue.use(VueRouter);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('users-component', require('./components/Users.vue').default);
+Vue.component('users-component', require('./components/users/Users.vue').default);
 Vue.component('user-create', require('./components/users/Create.vue').default);
 Vue.component('user-edit', require('./components/users/Edit.vue').default);
 
@@ -38,7 +38,8 @@ const Bar = { template: '<div>bar</div>' }
 const routes = [
     { path: '/foo', component:  Foo },
     { path: '/bar', component: Bar },
-    { path: '/users', component: require('./components/Users.vue').default }
+    { path: '/users', component: require('./components/users/Users.vue').default },
+    { path: '/users/create', component: require('./components/users/Create.vue').default },
   ]
   
   const router = new VueRouter({
