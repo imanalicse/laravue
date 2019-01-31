@@ -59,6 +59,7 @@
                     this.name = '';
                     this.email = '';
                     this.password = '';
+                    this.$router.push('/users');
                 }).catch( error => {
                     console.log('error')
                     console.log(error.response.data);

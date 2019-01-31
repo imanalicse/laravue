@@ -1854,6 +1854,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.name = '';
         _this.email = '';
         _this.password = '';
+
+        _this.$router.push('/users');
       }).catch(function (error) {
         console.log('error');
         console.log(error.response.data);
