@@ -11,6 +11,9 @@ window.Vue = require('vue');
 
 window.axios = require('axios');
 
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -27,6 +30,23 @@ Vue.component('users-component', require('./components/Users.vue').default);
 Vue.component('user-create', require('./components/users/Create.vue').default);
 Vue.component('user-edit', require('./components/users/Edit.vue').default);
 
+
+const Foo = { template: '<div>foo</div>' }
+const Bar = { template: '<div>bar</div>' }
+
+
+const routes = [
+    { path: '/foo', component:  Foo },
+    { path: '/bar', component: Bar },
+    { path: '/users', component: require('./components/Users.vue').default }
+  ]
+  
+  const router = new VueRouter({
+    routes // short for `routes: routes`
+  });
+  
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router // short for `routes: routes`   
 });

@@ -73,6 +73,10 @@
         </nav>
         <div class="container">
             <main class="py-4">
+                    <router-link to="/foo">Go to Foo</router-link>
+                    <router-link to="/bar">Go to Bar</router-link>
+                    <router-link to="/users">Users</router-link>
+                <router-view></router-view>
                 @yield('content')
             </main>
         </div>
