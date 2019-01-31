@@ -75,7 +75,8 @@
             <main class="py-4">                    
                     <router-link to="/users">Users</router-link>
                     <router-link to="/users/create">Create User</router-link>
-                <router-view></router-view>                
+                <router-view></router-view>
+                {{-- @yield('content') --}}
             </main>
         </div>
     </div>
