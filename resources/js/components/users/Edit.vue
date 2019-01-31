@@ -22,12 +22,13 @@
         data(){
             return {
                 name:'',
-                email: ''                                      
+                email: '',
+                user_id: ''                                      
             }            
         },
-        mounted() {             
-            axios.get('/api/users/'+this.id).then(resp => {            
-                //console.log(resp);
+        mounted() {          
+            this.user_id = this.$route.params.id;            
+            axios.get('/api/users/'+this.user_id).then(resp => { 
                 this.name = resp.data.name;
                 this.email = resp.data.email;                
             }).catch(error => {
@@ -44,12 +45,11 @@
                     name: this.name,
                     email: this.email                    
                 }
-                
-                console.log(model);
 
-                axios.put('/api/users/'+this.id, model)
+                axios.put('/api/users/'+this.user_id, model)
                 .then(response => {
-                    console.log(response);                   
+                    console.log(response);   
+                    this.$router.push('/users');                                    
                 }).catch( err => {
                     console.log(err);
                 })

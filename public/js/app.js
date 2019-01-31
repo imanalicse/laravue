@@ -1900,14 +1900,15 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       name: '',
-      email: ''
+      email: '',
+      user_id: ''
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/api/users/' + this.id).then(function (resp) {
-      //console.log(resp);
+    this.user_id = this.$route.params.id;
+    axios.get('/api/users/' + this.user_id).then(function (resp) {
       _this.name = resp.data.name;
       _this.email = resp.data.email;
     }).catch(function (error) {
@@ -1916,14 +1917,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateUser: function updateUser(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var model = {
         name: this.name,
         email: this.email
       };
-      console.log(model);
-      axios.put('/api/users/' + this.id, model).then(function (response) {
+      axios.put('/api/users/' + this.user_id, model).then(function (response) {
         console.log(response);
+
+        _this2.$router.push('/users');
       }).catch(function (err) {
         console.log(err);
       });
@@ -37195,30 +37199,34 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(user.email))]),
             _vm._v(" "),
-            _c("td", [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { href: "/users/" + user.id + "/edit" }
-                },
-                [_vm._v("Edit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-danger",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.deleteUser(user.id)
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { to: "/users/" + user.id + "/edit" }
+                  },
+                  [_vm._v("Edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        _vm.deleteUser(user.id)
+                      }
                     }
-                  }
-                },
-                [_vm._v("Delete")]
-              )
-            ])
+                  },
+                  [_vm._v("Delete")]
+                )
+              ],
+              1
+            )
           ])
         }),
         0
@@ -51192,6 +51200,9 @@ var routes = [{
 }, {
   path: '/users/create',
   component: __webpack_require__(/*! ./components/users/Create.vue */ "./resources/js/components/users/Create.vue").default
+}, {
+  path: '/users/:id/edit',
+  component: __webpack_require__(/*! ./components/users/Edit.vue */ "./resources/js/components/users/Edit.vue").default
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   routes: routes // short for `routes: routes`

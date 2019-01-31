@@ -41,6 +41,7 @@ const routes = [
     { path: '/bar', component: Bar },
     { path: '/users', component: require('./components/users/Users.vue').default },
     { path: '/users/create', component: require('./components/users/Create.vue').default },
+    { path: '/users/:id/edit', component: require('./components/users/Edit.vue').default },
   ]
   
   const router = new VueRouter({

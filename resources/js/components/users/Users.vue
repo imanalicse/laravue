@@ -19,8 +19,8 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
-                <td>
-                    <a :href="'/users/'+user.id+'/edit'" class="btn btn-primary">Edit</a>
+                <td>                    
+                    <router-link :to="'/users/'+user.id+'/edit'"  class="btn btn-primary">Edit</router-link>
                     <button type="button" class="btn btn-danger" @click="deleteUser(user.id)">Delete</button>
                 </td>
             </tr>                  
