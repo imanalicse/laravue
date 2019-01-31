@@ -72,9 +72,7 @@
             </div>
         </nav>
         <div class="container">
-            <main class="py-4">
-                    <router-link to="/foo">Go to Foo</router-link>
-                    <router-link to="/bar">Go to Bar</router-link>
+            <main class="py-4">                    
                     <router-link to="/users">Users</router-link>
                     <router-link to="/users/create">Create User</router-link>
                 <router-view></router-view>                

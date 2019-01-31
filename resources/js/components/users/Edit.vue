@@ -1,6 +1,6 @@
 <template>
     <div>
-         <h2>Edit User <small><a href="/users">Users</a></small> </h2> 
+         <h2>Edit User <small><router-link to="/users">Users</router-link></small> </h2> 
             <form action="/users" method="post" @submit="updateUser">
                 <div class="form-group">
                     <label for="name">Name</label>

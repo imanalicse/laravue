@@ -3,7 +3,7 @@
     <div>
     <h2>Users Listing</h2>
     
-    <a href="/users/create" class="btn btn-success pull-right mb-2">Add New User</a>  
+    <router-link to="/users/create" class="btn btn-success pull-right mb-2">Add New User</router-link>      
     
    <table class="table table-striped">
         <thead>

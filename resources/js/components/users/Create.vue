@@ -1,6 +1,6 @@
 <template>
     <div>
-         <h2>Add New User <small><a href="/users">Users</a></small></h2>
+         <h2>Add New User <small><router-link to="/users">Users</router-link></small></h2>
 
             <form action="/users" method="post" @submit="addNewUser">
                 <div class="form-group">
