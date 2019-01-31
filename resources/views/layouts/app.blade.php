@@ -77,8 +77,7 @@
                     <router-link to="/bar">Go to Bar</router-link>
                     <router-link to="/users">Users</router-link>
                     <router-link to="/users/create">Create User</router-link>
-                <router-view></router-view>
-                {{-- @yield('content') --}}
+                <router-view></router-view>                
             </main>
         </div>
     </div>

@@ -51178,6 +51178,9 @@ var Bar = {
   template: '<div>bar</div>'
 };
 var routes = [{
+  path: '/',
+  component: __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default
+}, {
   path: '/foo',
   component: Foo
 }, {

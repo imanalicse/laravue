@@ -36,6 +36,7 @@ const Bar = { template: '<div>bar</div>' }
 
 
 const routes = [
+    { path: '/', component:  require('./components/ExampleComponent.vue').default },
     { path: '/foo', component:  Foo },
     { path: '/bar', component: Bar },
     { path: '/users', component: require('./components/users/Users.vue').default },
